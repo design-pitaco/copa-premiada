@@ -2483,6 +2483,10 @@ html[data-theme="light"] .site-footer__age-icon {
     scroll-padding-inline: 32px;
   }
 
+  .upcoming-promo-card__background {
+    object-position: center;
+  }
+
   .featured-promo__game {
     flex-basis: 136px;
     width: 136px;
