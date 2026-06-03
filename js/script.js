@@ -1665,7 +1665,12 @@ function renderPromotionDetail(promotion, now = getCurrentDate()) {
   `;
 
   promoDetailBody.querySelectorAll(".promo-detail__games").forEach(setupDraggableCarousel);
-  promoDetailFooter.innerHTML = getPrimaryButton(detailPromotion, statusViewModel.status, "promo-detail");
+
+  const primaryButtonStatus = detailPromotion.type === "cashback" && detailPromotion.playUrl
+    ? "active"
+    : statusViewModel.status;
+
+  promoDetailFooter.innerHTML = getPrimaryButton(detailPromotion, primaryButtonStatus, "promo-detail");
 }
 
 function lockPromoDetailPageScroll() {
