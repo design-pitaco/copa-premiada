@@ -1484,9 +1484,14 @@ function renderPromotionCard(promotion, index, now = getCurrentDate()) {
   const statusViewModel = getStatusViewModel(promotion, now);
   const cardClass = getStatusCardClass(statusViewModel.status);
   const brandClass = promotion.providerLogoClass ? ` ${promotion.providerLogoClass}` : "";
+  const backgroundMarkup = promotion.backgroundImage
+    ? `<img class="upcoming-promo-card__background" src="${escapeHtml(promotion.backgroundImage)}" alt="">`
+    : "";
 
   return `
     <article class="upcoming-promo-card ${cardClass}" style="z-index: ${index + 1}">
+      ${backgroundMarkup}
+
       <div class="upcoming-promo-card__content">
         <img class="upcoming-promo-card__brand${brandClass}" src="${escapeHtml(promotion.providerLogo)}" alt="${escapeHtml(promotion.providerName)}">
 

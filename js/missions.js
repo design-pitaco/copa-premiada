@@ -6,7 +6,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-06-01",
     endDate: "2026-06-11",
     text: "Aposte R$50 e ganhe 100 giros grátis no jogo Ronaldinho's.",
-    playUrl: "#"
+    image: "images/imgMissaoRonaldinho.png",
+    imageAlt: "Ronaldinho's",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_ronaldinho_010626"
   },
   {
     id: "missao-lancamento-cassino-copa",
@@ -15,7 +17,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-06-11",
     endDate: "2026-06-13",
     text: "Aposte R$1 e ganhe 100 giros grátis no jogo Le Football.",
-    playUrl: "#"
+    image: "images/imgMissaoLeFootball.png",
+    imageAlt: "Le Football",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_lancamento_cassino_copa_110626"
   },
   {
     id: "missao-semana-estreia",
@@ -24,7 +28,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-06-14",
     endDate: "2026-06-21",
     text: "Aposte R$50 e ganhe 50 giros grátis no jogo Big Bass Football.",
-    playUrl: "#"
+    image: "images/imgMissaoBigBass.png",
+    imageAlt: "Big Bass Football",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_estreia_140626"
   },
   {
     id: "missao-cassino-tada",
@@ -33,7 +39,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-06-22",
     endDate: "2026-06-28",
     text: "Aposte R$50 e ganhe 30 giros grátis no jogo Lucky Caramelo.",
-    playUrl: "#"
+    image: "images/imgMissaoLuckyCaramelo.png",
+    imageAlt: "Lucky Caramelo",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_lucky_caramelo_220626"
   },
   {
     id: "missao-mata-mata",
@@ -42,7 +50,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-06-29",
     endDate: "2026-07-05",
     text: "Aposte R$50 e ganhe 100 giros grátis no jogo Rico DJ.",
-    playUrl: "#"
+    image: "images/imgMissaoRicoDJ.png",
+    imageAlt: "Rico DJ",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_mata_mata_290626"
   },
   {
     id: "missao-cassino-le-digger",
@@ -51,7 +61,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-07-06",
     endDate: "2026-07-12",
     text: "Aposte R$50 e ganhe 100 giros grátis no jogo Le Digger.",
-    playUrl: "#"
+    image: "images/imgMissaoLeDigger.png",
+    imageAlt: "Le Digger",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_le_digger_060726"
   },
   {
     id: "missao-reta-final",
@@ -60,7 +72,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-07-13",
     endDate: "2026-07-19",
     text: "Aposte R$50 e ganhe 200 giros grátis no jogo Crown Coins.",
-    playUrl: "#"
+    image: "images/imgMissaoCrownCoins.png",
+    imageAlt: "Crown Coins",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_reta_final_130726"
   },
   {
     id: "missao-final-copa",
@@ -69,7 +83,9 @@ window.COPA_MISSIONS = [
     startDate: "2026-07-16",
     endDate: "2026-07-19",
     text: "Aposte R$50 e ganhe 50 giros grátis no jogo Aviamasters.",
-    playUrl: "#"
+    image: "images/imgMissaoAviamasters.png",
+    imageAlt: "Aviamasters",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_final_copa_aviamasters_160726"
   },
   {
     id: "missao-vida-continua",
@@ -78,6 +94,8 @@ window.COPA_MISSIONS = [
     startDate: "2026-07-20",
     endDate: "2026-07-27",
     text: "Aposte R$50 e ganhe 50 giros grátis no jogo Gates of Olympus.",
-    playUrl: "#"
+    image: "images/imgMissaoGatesOfOlympus.png",
+    imageAlt: "Gates of Olympus",
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_vida_continua_200726"
   }
 ];
