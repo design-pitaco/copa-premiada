@@ -8,7 +8,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 100 giros grátis no jogo Ronaldinho's.",
     image: "images/imgMissaoRonaldinho.png",
     imageAlt: "Ronaldinho's",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_ronaldinho_010626"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_ronaldinho_010626",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_ronaldinho_010626"
   },
   {
     id: "missao-lancamento-cassino-copa",
@@ -19,7 +20,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$1 e ganhe 100 giros grátis no jogo Le Football.",
     image: "images/imgMissaoLeFootball.png",
     imageAlt: "Le Football",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_lancamento_cassino_copa_110626"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_lancamento_cassino_copa_110626",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_lancamento_cassino_copa_110626"
   },
   {
     id: "missao-semana-estreia",
@@ -30,7 +32,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 50 giros grátis no jogo Big Bass Football.",
     image: "images/imgMissaoBigBass.png",
     imageAlt: "Big Bass Football",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_estreia_140626"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_estreia_140626",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_cassino_estreia_140626"
   },
   {
     id: "missao-cassino-tada",
@@ -41,7 +44,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 30 giros grátis no jogo Lucky Caramelo.",
     image: "images/imgMissaoLuckyCaramelo.png",
     imageAlt: "Lucky Caramelo",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_lucky_caramelo_220626"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_lucky_caramelo_220626",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_cassino_lucky_caramelo_220626"
   },
   {
     id: "missao-mata-mata",
@@ -52,7 +56,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 100 giros grátis no jogo Rico DJ.",
     image: "images/imgMissaoRicoDJ.png",
     imageAlt: "Rico DJ",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_mata_mata_290626"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_mata_mata_290626",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_cassino_mata_mata_290626"
   },
   {
     id: "missao-cassino-le-digger",
@@ -63,7 +68,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 100 giros grátis no jogo Le Digger.",
     image: "images/imgMissaoLeDigger.png",
     imageAlt: "Le Digger",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_le_digger_060726"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_le_digger_060726",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_cassino_le_digger_060726"
   },
   {
     id: "missao-reta-final",
@@ -74,7 +80,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 200 giros grátis no jogo Crown Coins.",
     image: "images/imgMissaoCrownCoins.png",
     imageAlt: "Crown Coins",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_reta_final_130726"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_reta_final_130726",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_cassino_reta_final_130726"
   },
   {
     id: "missao-final-copa",
@@ -85,7 +92,8 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 50 giros grátis no jogo Aviamasters.",
     image: "images/imgMissaoAviamasters.png",
     imageAlt: "Aviamasters",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_final_copa_aviamasters_160726"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_final_copa_aviamasters_160726",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_final_copa_aviamasters_160726"
   },
   {
     id: "missao-vida-continua",
@@ -96,6 +104,7 @@ window.COPA_MISSIONS = [
     text: "Aposte R$50 e ganhe 50 giros grátis no jogo Gates of Olympus.",
     image: "images/imgMissaoGatesOfOlympus.png",
     imageAlt: "Gates of Olympus",
-    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_vida_continua_200726"
+    playUrl: "https://pitaco.bet.br/promocoes/missao_cassino_vida_continua_200726",
+    mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=missao_cassino_vida_continua_200726"
   }
 ];

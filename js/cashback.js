@@ -9,6 +9,7 @@ window.COPA_CASHBACK_PROMOTION = {
   prizeLabel: "Cashback",
   prizeValue: "Até 30% em Pitacoins",
   playUrl: "https://pitaco.bet.br/cassino/cashback",
+  mobilePlayUrl: "reidopitaco://app?dp=promotions&slug=retorno-do-rei",
   details: {
     howItWorks: [
       {

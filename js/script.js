@@ -21,7 +21,9 @@ const promoDetailRoot = document.querySelector("[data-promo-detail]");
 const promoDetailHeader = document.querySelector("[data-promo-detail-header]");
 const promoDetailBody = document.querySelector("[data-promo-detail-body]");
 const promoDetailFooter = document.querySelector("[data-promo-detail-footer]");
+const headerCta = document.querySelector(".site-header__cta");
 const themePreferenceQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
+const mobileViewportQuery = window.matchMedia ? window.matchMedia("(max-width: 768px)") : null;
 const saoPauloDateFormatter = new Intl.DateTimeFormat("pt-BR", {
   day: "2-digit",
   month: "2-digit",
@@ -409,12 +411,33 @@ function getPromotionDisplayPriority(promotion) {
   return Number.isFinite(priority) ? priority : Number.POSITIVE_INFINITY;
 }
 
+function isMobileViewport() {
+  return mobileViewportQuery ? mobileViewportQuery.matches : window.innerWidth <= 768;
+}
+
+function getResponsivePlayUrl(item) {
+  return isMobileViewport() && item.mobilePlayUrl ? item.mobilePlayUrl : item.playUrl;
+}
+
+function updateHeaderCtaUrl() {
+  if (!headerCta) {
+    return;
+  }
+
+  const desktopHref = headerCta.dataset.desktopHref || headerCta.getAttribute("href") || "#";
+  const mobileHref = headerCta.dataset.mobileHref;
+
+  headerCta.dataset.desktopHref = desktopHref;
+  headerCta.setAttribute("href", isMobileViewport() && mobileHref ? mobileHref : desktopHref);
+}
+
 function getPrimaryButton(promotion, status, classPrefix) {
   const className = `${classPrefix}__button`;
+  const playUrl = getResponsivePlayUrl(promotion);
 
   if (status === "active") {
-    if (promotion.playUrl) {
-      return `<a class="${className} ${className}--primary" href="${escapeHtml(promotion.playUrl)}">Jogar Agora</a>`;
+    if (playUrl) {
+      return `<a class="${className} ${className}--primary" href="${escapeHtml(playUrl)}">Jogar Agora</a>`;
     }
 
     return `<span class="${className} ${className}--primary" aria-disabled="true">Jogar Agora</span>`;
@@ -471,10 +494,11 @@ function getGameDisplayMode(promotion) {
 
 function getMissionButton(mission, status) {
   const className = "mission-card__button";
+  const playUrl = getResponsivePlayUrl(mission);
 
   if (status === "active") {
-    if (mission.playUrl) {
-      return `<a class="${className} ${className}--primary" href="${escapeHtml(mission.playUrl)}">Acessar</a>`;
+    if (playUrl) {
+      return `<a class="${className} ${className}--primary" href="${escapeHtml(playUrl)}">Acessar</a>`;
     }
 
     return `<span class="${className} ${className}--primary" aria-disabled="true">Acessar</span>`;
@@ -640,8 +664,10 @@ function updateCashbackSectionCopy() {
     cashbackDescription.textContent = copy.description;
   }
 
-  if (cashbackPlayLink && cashbackPromotion?.playUrl) {
-    cashbackPlayLink.setAttribute("href", cashbackPromotion.playUrl);
+  const cashbackPlayUrl = cashbackPromotion ? getResponsivePlayUrl(cashbackPromotion) : "";
+
+  if (cashbackPlayLink && cashbackPlayUrl) {
+    cashbackPlayLink.setAttribute("href", cashbackPlayUrl);
   }
 }
 
@@ -1396,7 +1422,7 @@ function renderFeaturedCashback(now = getCurrentDate()) {
         <p class="featured-cashback__description">${escapeHtml(copy.featuredDescription)}</p>
 
         <div class="featured-cashback__actions">
-          <a class="featured-cashback__button featured-cashback__button--primary" href="${escapeHtml(cashbackPromotion.playUrl || "#")}">Jogar Agora</a>
+          <a class="featured-cashback__button featured-cashback__button--primary" href="${escapeHtml(getResponsivePlayUrl(cashbackPromotion) || "#")}">Jogar Agora</a>
           <button class="featured-cashback__button featured-cashback__button--secondary" type="button" data-promo-detail-id="${escapeHtml(cashbackPromotion.id)}">Saiba Mais</button>
         </div>
       </div>
@@ -2208,6 +2234,23 @@ if (cashbackNextButton) {
 }
 
 setupCashbackSwipe();
+updateHeaderCtaUrl();
+
+if (mobileViewportQuery) {
+  const handleMobileViewportChange = () => {
+    updateHeaderCtaUrl();
+    renderMissions();
+    renderCashbackSection();
+    renderPromotionSections();
+    refreshPromotionRenderEffects();
+  };
+
+  if (mobileViewportQuery.addEventListener) {
+    mobileViewportQuery.addEventListener("change", handleMobileViewportChange);
+  } else if (mobileViewportQuery.addListener) {
+    mobileViewportQuery.addListener(handleMobileViewportChange);
+  }
+}
 
 document.addEventListener("click", (event) => {
   const detailTrigger = event.target.closest("[data-promo-detail-id]");

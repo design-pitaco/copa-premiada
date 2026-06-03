@@ -13,6 +13,7 @@ window.COPA_PROMOTIONS = [
     providerLogo: "images/logoProvedorPGSoft.png",
     providerLogoClass: "upcoming-promo-card__brand--pg-soft",
     playUrl: "https://pitaco.bet.br/torneios/hat-trick-pg-soft",
+    mobilePlayUrl: "reidopitaco://app?dp=tournament&slug=hat-trick-pg-soft",
     rulesUrl: "#",
     details: {
       howItWorks: [
@@ -114,6 +115,7 @@ window.COPA_PROMOTIONS = [
     providerLogo: "images/logoProvedorPragmatic.png",
     providerLogoClass: "upcoming-promo-card__brand--pragmatic",
     playUrl: "https://pitaco.bet.br/cassino/page/premios-da-copa",
+    mobilePlayUrl: "reidopitaco://app?dp=cassino-sub-page&slug=premios-da-copa",
     rulesUrl: "#",
     details: {
       howItWorks: [
@@ -174,6 +176,7 @@ window.COPA_PROMOTIONS = [
     providerLogo: "images/logoProvedorPopOK.png",
     providerLogoClass: "upcoming-promo-card__brand--popok",
     playUrl: "https://pitaco.bet.br/torneios/virada-epica-popok",
+    mobilePlayUrl: "reidopitaco://app?dp=tournament&slug=virada-epica-popok",
     rulesUrl: "#",
     details: {
       howItWorks: [
@@ -259,6 +262,7 @@ window.COPA_PROMOTIONS = [
     providerLogo: "images/logoProvedorHacksaw.png",
     providerLogoClass: "upcoming-promo-card__brand--hacksaw",
     playUrl: "https://pitaco.bet.br/torneios/golaco-hacksaw",
+    mobilePlayUrl: "reidopitaco://app?dp=tournament&slug=golaco-hacksaw",
     rulesUrl: "#",
     details: {
       howItWorks: [
@@ -353,6 +357,7 @@ window.COPA_PROMOTIONS = [
     providerLogo: "images/logoProvedorGamesGlobal.png",
     providerLogoClass: "upcoming-promo-card__brand--games-global",
     playUrl: "https://pitaco.bet.br/cassino/page/gol-de-ouro",
+    mobilePlayUrl: "reidopitaco://app?dp=cassino-sub-page&slug=gol-de-ouro",
     rulesUrl: "#",
     missingGameImages: [
       "Kick Crash Crash",
@@ -433,6 +438,7 @@ window.COPA_PROMOTIONS = [
     featuredGamesClass: "featured-promo__games--aviator",
     detailGamesClass: "promo-detail__games--aviator",
     playUrl: "https://pitaco.bet.br/torneios/taça-de-ouro-aviator",
+    mobilePlayUrl: "reidopitaco://app?dp=tournament&slug=taça-de-ouro-aviator",
     rulesUrl: "#",
     details: {
       howItWorks: [
