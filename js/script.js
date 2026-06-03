@@ -419,6 +419,20 @@ function getResponsivePlayUrl(item) {
   return isMobileViewport() && item.mobilePlayUrl ? item.mobilePlayUrl : item.playUrl;
 }
 
+function getResponsivePlayLinkAttributes(item) {
+  const playUrl = getResponsivePlayUrl(item);
+
+  if (!playUrl) {
+    return "";
+  }
+
+  const fallbackAttribute = isMobileViewport() && item.mobilePlayUrl && item.playUrl
+    ? ` data-fallback-href="${escapeHtml(item.playUrl)}"`
+    : "";
+
+  return `href="${escapeHtml(playUrl)}"${fallbackAttribute}`;
+}
+
 function updateHeaderCtaUrl() {
   if (!headerCta) {
     return;
@@ -428,16 +442,24 @@ function updateHeaderCtaUrl() {
   const mobileHref = headerCta.dataset.mobileHref;
 
   headerCta.dataset.desktopHref = desktopHref;
-  headerCta.setAttribute("href", isMobileViewport() && mobileHref ? mobileHref : desktopHref);
+
+  if (isMobileViewport() && mobileHref) {
+    headerCta.setAttribute("href", mobileHref);
+    headerCta.dataset.fallbackHref = desktopHref;
+    return;
+  }
+
+  headerCta.setAttribute("href", desktopHref);
+  headerCta.removeAttribute("data-fallback-href");
 }
 
 function getPrimaryButton(promotion, status, classPrefix) {
   const className = `${classPrefix}__button`;
-  const playUrl = getResponsivePlayUrl(promotion);
+  const playLinkAttributes = getResponsivePlayLinkAttributes(promotion);
 
   if (status === "active") {
-    if (playUrl) {
-      return `<a class="${className} ${className}--primary" href="${escapeHtml(playUrl)}">Jogar Agora</a>`;
+    if (playLinkAttributes) {
+      return `<a class="${className} ${className}--primary" ${playLinkAttributes}>Jogar Agora</a>`;
     }
 
     return `<span class="${className} ${className}--primary" aria-disabled="true">Jogar Agora</span>`;
@@ -494,11 +516,11 @@ function getGameDisplayMode(promotion) {
 
 function getMissionButton(mission, status) {
   const className = "mission-card__button";
-  const playUrl = getResponsivePlayUrl(mission);
+  const playLinkAttributes = getResponsivePlayLinkAttributes(mission);
 
   if (status === "active") {
-    if (playUrl) {
-      return `<a class="${className} ${className}--primary" href="${escapeHtml(playUrl)}">Acessar</a>`;
+    if (playLinkAttributes) {
+      return `<a class="${className} ${className}--primary" ${playLinkAttributes}>Acessar</a>`;
     }
 
     return `<span class="${className} ${className}--primary" aria-disabled="true">Acessar</span>`;
@@ -668,6 +690,12 @@ function updateCashbackSectionCopy() {
 
   if (cashbackPlayLink && cashbackPlayUrl) {
     cashbackPlayLink.setAttribute("href", cashbackPlayUrl);
+
+    if (isMobileViewport() && cashbackPromotion.mobilePlayUrl && cashbackPromotion.playUrl) {
+      cashbackPlayLink.dataset.fallbackHref = cashbackPromotion.playUrl;
+    } else {
+      cashbackPlayLink.removeAttribute("data-fallback-href");
+    }
   }
 }
 
@@ -1422,7 +1450,7 @@ function renderFeaturedCashback(now = getCurrentDate()) {
         <p class="featured-cashback__description">${escapeHtml(copy.featuredDescription)}</p>
 
         <div class="featured-cashback__actions">
-          <a class="featured-cashback__button featured-cashback__button--primary" href="${escapeHtml(getResponsivePlayUrl(cashbackPromotion) || "#")}">Jogar Agora</a>
+          <a class="featured-cashback__button featured-cashback__button--primary" ${getResponsivePlayLinkAttributes(cashbackPromotion) || 'href="#"'}>Jogar Agora</a>
           <button class="featured-cashback__button featured-cashback__button--secondary" type="button" data-promo-detail-id="${escapeHtml(cashbackPromotion.id)}">Saiba Mais</button>
         </div>
       </div>
@@ -2251,6 +2279,26 @@ if (mobileViewportQuery) {
     mobileViewportQuery.addListener(handleMobileViewportChange);
   }
 }
+
+document.addEventListener("click", (event) => {
+  const deepLink = event.target.closest('a[href^="reidopitaco://"]');
+
+  if (!deepLink || !deepLink.dataset.fallbackHref) {
+    return;
+  }
+
+  event.preventDefault();
+
+  const fallbackHref = deepLink.dataset.fallbackHref;
+
+  window.location.href = deepLink.href;
+
+  window.setTimeout(() => {
+    if (!document.hidden) {
+      window.location.href = fallbackHref;
+    }
+  }, 1400);
+});
 
 document.addEventListener("click", (event) => {
   const detailTrigger = event.target.closest("[data-promo-detail-id]");
