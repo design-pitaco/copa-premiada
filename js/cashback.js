@@ -18,7 +18,7 @@ window.COPA_CASHBACK_PROMOTION = {
       },
       {
         title: "Receba 20% ou 30% de volta",
-        text: "Nos jogos do Brasil e no dia da final, o cashback é de 30%. Nos demais dias da Copa, o cashback é de 20%."
+        text: "Nos jogos do Brasil, nas semifinais e no dia da final, o cashback é de 30%. Nos demais dias da Copa, o cashback é de 20%."
       },
       {
         title: "Use no dia seguinte",
@@ -28,7 +28,7 @@ window.COPA_CASHBACK_PROMOTION = {
     faq: [
       {
         question: "Como participar da promoção Cashback da Copa?",
-        answer: "Para participar, jogue com dinheiro real nos jogos de cassino participantes da promoção durante a Copa. Nos jogos do Brasil e no dia da final, o cashback é de 30%; nos demais dias da Copa, é de 20%. A participação é automática."
+        answer: "Para participar, jogue com dinheiro real nos jogos de cassino participantes da promoção durante a Copa. Nos jogos do Brasil, nas semifinais e no dia da final, o cashback é de 30%; nos demais dias da Copa, é de 20%. A participação é automática."
       },
       {
         question: "Quais jogos participam da promoção?",
@@ -51,7 +51,7 @@ window.COPA_CASHBACK_PROMOTION = {
         answer: "Sim. Assim que forem liberadas como bônus, você pode usar as Pitacoins em qualquer jogo do Cassino ou em Apostas. Elas são usadas antes do saldo sacável ao fazer apostas."
       }
     ],
-    termsSummary: "Cashback em Pitacoins válido durante a Copa nos jogos de cassino participantes da promoção. Nos jogos do Brasil e no dia da final, o cashback é de 30%; nos demais dias da Copa, é de 20%. Válido sobre perdas líquidas em jogadas com dinheiro real. Participação automática, sem valor mínimo. Crédito realizado no dia seguinte."
+    termsSummary: "Cashback em Pitacoins válido durante a Copa nos jogos de cassino participantes da promoção. Nos jogos do Brasil, nas semifinais e no dia da final, o cashback é de 30%; nos demais dias da Copa, é de 20%. Válido sobre perdas líquidas em jogadas com dinheiro real. Participação automática, sem valor mínimo. Crédito realizado no dia seguinte."
   }
 };
 
@@ -85,6 +85,44 @@ window.COPA_CASHBACK_MATCHES = [
       name: "Escócia",
       flagSlug: "escocia"
     }
+  },
+  {
+    id: "world-cup-semifinal-01",
+    espnEventId: "760514",
+    date: "2026-07-14T19:00:00Z",
+    stage: "Semifinal 1",
+    isSemifinal: true,
+    teams: [
+      {
+        abbreviation: "QFW1",
+        name: "Vencedor quartas 1",
+        flagSlug: ""
+      },
+      {
+        abbreviation: "QFW2",
+        name: "Vencedor quartas 2",
+        flagSlug: ""
+      }
+    ]
+  },
+  {
+    id: "world-cup-semifinal-02",
+    espnEventId: "760515",
+    date: "2026-07-15T19:00:00Z",
+    stage: "Semifinal 2",
+    isSemifinal: true,
+    teams: [
+      {
+        abbreviation: "QFW3",
+        name: "Vencedor quartas 3",
+        flagSlug: ""
+      },
+      {
+        abbreviation: "QFW4",
+        name: "Vencedor quartas 4",
+        flagSlug: ""
+      }
+    ]
   },
   {
     id: "world-cup-final",
