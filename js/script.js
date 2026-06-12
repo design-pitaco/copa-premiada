@@ -41,8 +41,8 @@ const cashbackRefreshMs = 5 * 60 * 1000;
 const cashbackCopy = {
   section: {
     title: "Cashback da Copa",
-    headline: "Brasil ou final: cashback de 30%",
-    description: "Nos dias de jogo do Brasil e no dia da final, jogue nos jogos de cassino participantes e receba 30% das perdas líquidas em Pitacoins."
+    headline: "Brasil, semifinais e final: cashback de 30%",
+    description: "Nos dias de jogo do Brasil, das semifinais e da final, jogue nos jogos de cassino participantes e receba 30% das perdas líquidas em Pitacoins."
   },
   default: {
     title: "Cashback de 30%",
@@ -51,6 +51,14 @@ const cashbackCopy = {
     featuredTitle: "É hoje: cashback de 30%",
     featuredDescription: "A Seleção joga hoje. Jogue nos jogos de cassino participantes e receba 30% das perdas líquidas em Pitacoins.",
     featuredMatchLabel: "Jogo do Brasil de hoje"
+  },
+  semifinal: {
+    title: "Semifinal com cashback de 30%",
+    headline: "A semifinal também entra na promoção.",
+    description: "No dia de semifinal, jogue nos jogos de cassino participantes e receba 30% das suas perdas líquidas em Pitacoins no dia seguinte.",
+    featuredTitle: "É hoje: cashback de 30%",
+    featuredDescription: "Tem semifinal hoje. Jogue nos jogos de cassino participantes e receba 30% das perdas líquidas em Pitacoins.",
+    featuredMatchLabel: "Jogo da semifinal de hoje"
   },
   final: {
     title: "Final com cashback de 30%",
@@ -648,6 +656,7 @@ function normalizeFallbackCashbackMatch(match) {
     date: match.date,
     stage: match.stage,
     isFinal: match.isFinal === true || String(match.stage || "").trim().toLowerCase() === "final",
+    isSemifinal: match.isSemifinal === true || String(match.stage || "").trim().toLowerCase().startsWith("semifinal"),
     teams,
     brazil: teams[0],
     opponent: teams[1],
@@ -663,12 +672,28 @@ function isCashbackFinalEvent(event) {
   return event?.season?.slug === "final" || getCashbackStageLabel(event) === "Final";
 }
 
+function isCashbackSemifinalEvent(event) {
+  return event?.season?.slug === "semifinals" || getCashbackStageLabel(event).toLowerCase().startsWith("semifinal");
+}
+
 function isCashbackFinalMatch(match) {
   return match?.isFinal === true || String(match?.stage || "").trim().toLowerCase() === "final";
 }
 
+function isCashbackSemifinalMatch(match) {
+  return match?.isSemifinal === true || String(match?.stage || "").trim().toLowerCase().startsWith("semifinal");
+}
+
 function getCashbackCopy(match) {
-  return isCashbackFinalMatch(match) ? cashbackCopy.final : cashbackCopy.default;
+  if (isCashbackFinalMatch(match)) {
+    return cashbackCopy.final;
+  }
+
+  if (isCashbackSemifinalMatch(match)) {
+    return cashbackCopy.semifinal;
+  }
+
+  return cashbackCopy.default;
 }
 
 function updateCashbackSectionCopy() {
@@ -1005,8 +1030,9 @@ function normalizeCashbackEvent(event, slotReplacements) {
     .map((competitor) => resolveCashbackCompetitor(competitor, slotReplacements));
   const brazil = competitors.find(isBrazilTeam);
   const isFinal = isCashbackFinalEvent(event);
+  const isSemifinal = isCashbackSemifinalEvent(event);
 
-  if (!brazil && !isFinal) {
+  if (!brazil && !isSemifinal && !isFinal) {
     return null;
   }
 
@@ -1030,6 +1056,7 @@ function normalizeCashbackEvent(event, slotReplacements) {
     date: event.date,
     stage: getCashbackStageLabel(event),
     isFinal,
+    isSemifinal,
     teams: normalizedTeams,
     brazil: normalizedTeams[0],
     opponent: normalizedTeams[1],
